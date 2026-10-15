@@ -14,7 +14,7 @@ The repository currently contains simple SAM3 inference scripts for generating a
 ## Generate annotated images
 
 ```powershell
-uv run python sam3_ultralytics.py `
+uv run python scripts/sam3_ultralytics.py `
   --image path\to\image.jpg `
   --prompt airplane `
   --output results\image_airplane.jpg
@@ -23,10 +23,20 @@ uv run python sam3_ultralytics.py `
 For a folder:
 
 ```powershell
-uv run python sam3_ultralytics_batch.py `
+uv run python scripts/sam3_ultralytics_batch.py `
   --input-dir images `
   --output-dir results `
   --prompt airplane
 ```
 
-The scripts save annotated copies containing bounding boxes, labels, confidence scores, and, for Ultralytics, rendered masks. Original images are not overwritten by default. Useful prompts include `airplane`, `ship`, `vehicle`, `building`.
+The scripts save annotated copies containing only bounding boxes, labels, and confidence scores. They also save normalized YOLO label files beside the images. Original images are not overwritten by default. Useful prompts include `airplane`, `ship`, `vehicle`, and `building`.
+
+## Setup
+
+Install the environment with `uv`:
+
+```powershell
+uv sync --extra ultralytics --group dev
+```
+
+On Windows x64, `torch` and `torchvision` use the CUDA 12.8 PyTorch index. On other platforms, `uv` uses the normal PyPI packages automatically. This is a platform rule, not GPU detection; if another Windows computer needs CPU-only PyTorch, adjust the CUDA source entries in `pyproject.toml` locally.
