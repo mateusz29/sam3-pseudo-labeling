@@ -1,0 +1,44 @@
+.venv/
+venv/
+env/
+
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local model caches and downloaded checkpoints
+.cache/
+*.pt
+*.pth
+*.onnx
+*.safetensors
+
+# Local data and generated experiment outputs
+data/
+datasets/
+images/
+results/
+outputs/
+runs/
+wandb/
+mlruns/
+sam3_results/
+sam3_result.jpg
+
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
+
+# Editors and operating-system files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
